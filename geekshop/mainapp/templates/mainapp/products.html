@@ -6,8 +6,20 @@
 
 {% block content %}
     <div style="font-size: 45px">
-        Привет {{ username|title }}
+        Ваши продукты вот такие {{ username|title }}
     </div>
-   <h1>Ваши продукты вот такие</h1>
-    <div> {{ products }} </div>
+
+{% for product in products %}
+    <div class = "block">
+        <a href = "#">
+            <h3>{{ product.category.name }}</h3>
+            <h4> {{ product.name }} </h4>
+        <img src = "/media/{{ product.image }}" alt="{{ product.short_desc }}">
+        </a>
+    </div>
+{% endfor %}
+
 {% endblock %}
+
+
+
