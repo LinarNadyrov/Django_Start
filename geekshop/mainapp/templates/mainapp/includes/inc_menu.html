@@ -1,3 +1,19 @@
 <a href="{% url 'main' %}">Главная</a>
 <a href="{% url 'products' %}">Продукты</a>
 <a href="{% url 'contacts' %}">Контакты</a>
+
+{% if user.is_authenticated %}
+<li>
+    <a href = "{% url 'auth:edit' %}">
+        {{ user.first_name|default:'Пользователь' }}
+    </a>
+</li>
+{% endif %}
+
+<li>
+    {% if user.is_authenticated %}
+        <a href = "{% url 'auth:logout' %}">выйти</a>
+    {% else %}
+        <a href = "{% url 'auth:login' %}" >войти</a>
+    {% endif %}
+</li>
